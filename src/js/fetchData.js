@@ -27,23 +27,34 @@ export async function fetchData() {
 
      const addres = document.createElement('h3')
      addres.classList.add("addres")
-     addres.innerText = weatherData.address;
+     addres.innerText = `City: ${weatherData.address}`;
      weatherPlc.appendChild(addres)
 
      const condition = document.createElement('h3')
      condition.classList.add("condition")
-     condition.innerText = weatherData.currentConditions.conditions;
+     condition.innerText = `condition: ${weatherData.currentConditions.conditions}`;
      weatherPlc.appendChild(condition)
 
-     weather.appendChild(condition)
+     const timeZone = document.createElement("h3")
+     timeZone.classList.add('timeZone')
+     timeZone.innerText = `TimeZone: ${weatherData.timezone}`
+     weather.appendChild(timeZone)
+
+     const temprature = document.createElement("h3")
+     temprature.classList.add('temprature')
+     temprature.innerText = `Temprature: ${weatherData.currentConditions.temp} `
+     weather.appendChild(temprature)
+
+
+
      weather.appendChild(weatherPlc)
 
 
      
-    // console.log(weatherData);
+    console.log(weatherData);
   })
 
   } catch (error) {
-
+    
   }
 }
