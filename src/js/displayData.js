@@ -96,7 +96,6 @@ export async function displayData() {
 
       default:
         iconPlc.innerText = "sunny";
-        Default;
         break;
     }
 
