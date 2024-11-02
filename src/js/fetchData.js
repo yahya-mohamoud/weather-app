@@ -113,7 +113,7 @@ export async function fetchData() {
 
       const timeZone = document.createElement("h3");
       timeZone.classList.add("timeZone");
-      timeZone.innerText = `TimeZone: ${weatherData.timezone}`;
+      timeZone.innerText = `${weatherData.timezone}`;
       weatherTwo.appendChild(timeZone);
 
       const condition = document.createElement("h3");
@@ -121,20 +121,16 @@ export async function fetchData() {
       condition.innerText = ` ${weatherData.currentConditions.conditions}`;
       weatherPlc.appendChild(condition);
 
-      // const description = document.createElement("h3")
-      // description.classList.add('description')
-      // description.innerText = `description: ${weatherData.description}`
-      // weatherPlc.appendChild(description)
+      const description = document.createElement("h3");
+      description.classList.add("description");
+      description.innerText = `description: ${weatherData.description}`;
+      weatherPlc.appendChild(description);
 
       weather.appendChild(weatherTwo);
       weather.appendChild(weatherThree);
       weather.appendChild(weatherPlc);
 
       console.log(weatherData);
-
-      if (!weatherData.ok) {
-        alert("error in trying to fetch data");
-      }
     });
   } catch (error) {
     console.error(error);
