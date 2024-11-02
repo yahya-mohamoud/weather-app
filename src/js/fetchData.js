@@ -131,6 +131,10 @@ export async function fetchData() {
       weather.appendChild(weatherPlc);
 
       console.log(weatherData);
+
+      if (!weatherData.ok) {
+        alert("error in trying to fetch data");
+      }
     });
   } catch (error) {
     console.error(error);
