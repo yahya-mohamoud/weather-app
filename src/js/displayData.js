@@ -1,27 +1,19 @@
-import "/src/styles.css"
-const weather = document.querySelector(".weather")
-const container = document.querySelector(".container")
-const input = document.querySelector("#inp");
-const searchBtn = document.querySelector('.btn')
+import { fetchData } from "./fetchData";
 
+export async function displayData() {
+    const apiKey = '67DXDJ9NRVKSNRHWDVGKB7WQ4'
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/jijiga?unitGroup=us&key=${apiKey}&contentType=json`
 
-export async function fetchData() {
+    try {
 
-  let inpValue = '';
+        const response = await fetch(url, { mode: 'cors' })
+        const weatherData = await response.json()
 
-  const apiKey = '67DXDJ9NRVKSNRHWDVGKB7WQ4'
+        const weather = document.querySelector('.weather')
 
+        weather.innerText = "";
 
-  try {
-    searchBtn.addEventListener('click', async () => {
-      inpValue = input.value;
-
-      const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inpValue}?unitGroup=us&key=${apiKey}&contentType=json`, { mode: 'cors' })
-      const weatherData = await response.json()
-
-      weather.innerText = "";
-      
-      const weatherPlc = document.createElement("div")
+        const weatherPlc = document.createElement("div")
         weatherPlc.classList.add('weathPlc')
 
         const weatherTwo = document.createElement('div')
@@ -141,11 +133,11 @@ export async function fetchData() {
         weather.appendChild(weatherPlc)
 
 
-      console.log(weatherData);
+        console.log(weatherData);
 
-    })
 
-  } catch (error) {
-    console.error(error)
-  }
+
+    } catch (error) {
+        console.error(error)
+    }
 }
