@@ -105,7 +105,7 @@ export async function fetchData() {
 
         default:
           iconPlc.innerText = "sunny";
-          Default;
+
           break;
       }
 
