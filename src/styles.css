@@ -1,82 +1,102 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
-    background-color: antiquewhite;
-    min-height: 100vh;
+  background-color: antiquewhite;
+  min-height: 100vh;
 }
 
 .wrapper {
-    margin: 0 auto ;
-    display: flex;
-    justify-content: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 #inp {
-    width: 400px;
-    border: none;
-    height: 28px;
-    border-radius: 10px;
-    margin: 10px;
-    background-color: rgba(13, 49, 42, 0.966);
-    color: whitesmoke;
-    text-align: center;
-    font-size: 1.2rem;
-
+  width: 400px;
+  border: none;
+  height: 28px;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgba(13, 49, 42, 0.966);
+  color: whitesmoke;
+  text-align: center;
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 6px 3px rgb(99, 97, 97);
+  margin-bottom: 10px;
 }
 
 #inp:focus {
-    background-color: rgba(13, 49, 42, 0.966);
+  background-color: rgba(13, 49, 42, 0.966);
 }
 
 .btn {
-    width: 80px;
-    height: 28px;
-    border: none;
-    border-radius: 10px;
-    margin: 10px;
-    background-color: rgba(13, 49, 42, 0.966);
-    color: whitesmoke;
+  width: 80px;
+  height: 28px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgba(13, 49, 42, 0.966);
+  color: whitesmoke;
+  box-shadow: 2px 1px 3px 2px rgb(99, 97, 97);
+}
+
+.btn:hover {
+  background-color: rgba(17, 85, 71, 0.966);
 }
 
 .weather {
-    width: 450px;
-    height: 300px;
-    border: 1px solid black;
-    margin: 10px auto;
-    background-color: rgb(144, 231, 255);
-    border-radius: 8px;
-    box-shadow: 2px 2px 15px 6px rgb(102, 122, 164);
+  width: 450px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 10px auto;
+  background-color: rgb(144, 231, 255);
+  border-radius: 8px;
+  box-shadow: 2px 2px 15px 6px rgb(102, 122, 164);
 }
 
 .weatherTwo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 34px;
-
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  align-items: center;
+  font-size: 34px;
 }
 
-.weatherThree{
-     display: flex;
-     justify-content: space-around;
-     font-size: 34px;
-    align-items: center;
-     margin-top: 10px;
+.address {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.weatherThree {
+  display: flex;
+  justify-content: space-around;
+  font-size: 34px;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .timeZone {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .iconPlc {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .condition {
-    text-align: center;
+  text-align: center;
+}
+
+.description {
+  max-width: 38ch;
+  margin: 10px auto;
+  font-family: "Oleo Script", serif;
+  font-weight: 400;
+  font-style: normal;
 }
