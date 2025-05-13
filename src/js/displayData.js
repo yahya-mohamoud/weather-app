@@ -1,127 +1,113 @@
-import { fetchData } from "./fetchData";
+export async function displayData(weatherData) {
+  const weather = document.querySelector(".weather");
 
-export async function displayData() {
-  const apiKey = "67DXDJ9NRVKSNRHWDVGKB7WQ4";
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/jijiga?unitGroup=us&key=${apiKey}&contentType=json`;
+  weather.innerText = "";
 
-  try {
-    const response = await fetch(url, { mode: "cors" });
-    const weatherData = await response.json();
+  const weatherPlc = document.createElement("div");
+  weatherPlc.classList.add("weathPlc");
 
-    const weather = document.querySelector(".weather");
+  const weatherTwo = document.createElement("div");
+  weatherTwo.classList.add("weatherTwo");
 
-    weather.innerText = "";
+  const weatherThree = document.createElement("div");
+  weatherThree.classList.add("weatherThree");
 
-    const weatherPlc = document.createElement("div");
-    weatherPlc.classList.add("weathPlc");
+  const addres = document.createElement("h3");
+  addres.classList.add("address");
+  addres.innerText = `${weatherData.address}`.toUpperCase();
+  weatherTwo.appendChild(addres);
 
-    const weatherTwo = document.createElement("div");
-    weatherTwo.classList.add("weatherTwo");
+  const temprature = document.createElement("h3");
+  temprature.classList.add("temprature");
+  temprature.innerText = ` ${weatherData.currentConditions.temp} ℉`;
+  weatherThree.appendChild(temprature);
 
-    const weatherThree = document.createElement("div");
-    weatherThree.classList.add("weatherThree");
+  const iconPlc = document.createElement("h3");
+  iconPlc.classList.add("iconPlc");
+  const conditions = weatherData.currentConditions.icon;
 
-    const addres = document.createElement("h3");
-    addres.classList.add("address");
-    addres.innerText = `${weatherData.address}`.toUpperCase();
-    weatherTwo.appendChild(addres);
+  switch (conditions.toLowerCase()) {
+    case "clear":
+    case "sunny":
+      iconPlc.innerText = "☀️";
+      break;
 
-    const temprature = document.createElement("h3");
-    temprature.classList.add("temprature");
-    temprature.innerText = ` ${weatherData.currentConditions.temp} ℉`;
-    weatherThree.appendChild(temprature);
+    case "clear-night":
+      iconPlc.innerText = "🌜";
 
-    const iconPlc = document.createElement("h3");
-    iconPlc.classList.add("iconPlc");
-    const conditions = weatherData.currentConditions.icon;
+      break;
 
-    switch (conditions.toLowerCase()) {
-      case "clear":
-      case "sunny":
-        iconPlc.innerText = "☀️";
-        break;
+    case "partly cloudy":
+    case "partly sunny":
+      iconPlc.innerText = "⛅";
 
-      case "clear-night":
-        iconPlc.innerText = "🌜";
+      break;
 
-        break;
+    case "cloudy":
+    case "overcast":
+      iconPlc.innerText = "☁️";
+      break;
 
-      case "partly cloudy":
-      case "partly sunny":
-        iconPlc.innerText = "⛅";
+    case "light rain":
+    case "drizzle":
+      iconPlc.innerText = "🌦️";
+      break;
 
-        break;
+    case "rain":
+    case "showers":
+      iconPlc.innerText = "🌧️";
+      break;
 
-      case "cloudy":
-      case "overcast":
-        iconPlc.innerText = "☁️";
-        break;
+    case "heavy rain":
+      iconPlc.innerText = "☔";
+      break;
 
-      case "light rain":
-      case "drizzle":
-        iconPlc.innerText = "🌦️";
-        break;
+    case "thunderstorm":
+    case "thunder":
+      iconPlc.innerText = "⛈️";
+      break;
 
-      case "rain":
-      case "showers":
-        iconPlc.innerText = "🌧️";
-        break;
+    case "light snow":
+      iconPlc.innerText = "❄️";
+      break;
 
-      case "heavy rain":
-        iconPlc.innerText = "☔";
-        break;
+    case "snow":
+      iconPlc.innerText = "🌨️";
+      break;
 
-      case "thunderstorm":
-      case "thunder":
-        iconPlc.innerText = "⛈️";
-        break;
+    case "fog":
+    case "mist":
+      iconPlc.innerText = "🌁";
+      break;
 
-      case "light snow":
-        iconPlc.innerText = "❄️";
-        break;
+    case "windy":
+    case "breezy":
+      iconPlc.innerText = "🍃";
+      break;
 
-      case "snow":
-        iconPlc.innerText = "🌨️";
-        break;
-
-      case "fog":
-      case "mist":
-        iconPlc.innerText = "🌁";
-        break;
-
-      case "windy":
-      case "breezy":
-        iconPlc.innerText = "🍃";
-        break;
-
-      default:
-        iconPlc.innerText = "sunny";
-        break;
-    }
-
-    weatherThree.appendChild(iconPlc);
-
-    const timeZone = document.createElement("h3");
-    timeZone.classList.add("timeZone");
-    timeZone.innerText = `${weatherData.timezone}`;
-    weatherTwo.appendChild(timeZone);
-
-    const condition = document.createElement("h3");
-    condition.classList.add("condition");
-    condition.innerText = ` ${weatherData.currentConditions.conditions}`;
-    weatherPlc.appendChild(condition);
-
-    const description = document.createElement("h3");
-    description.classList.add("description");
-    description.innerText = `Description: ${weatherData.description}`;
-    weatherPlc.appendChild(description);
-
-    weather.appendChild(weatherTwo);
-    weather.appendChild(weatherThree);
-    weather.appendChild(weatherPlc);
-
-    console.log(weatherData);
-  } catch (error) {
-    console.error(error);
+    default:
+      iconPlc.innerText = "sunny";
+      break;
   }
+
+  weatherThree.appendChild(iconPlc);
+
+  const timeZone = document.createElement("h3");
+  timeZone.classList.add("timeZone");
+  timeZone.innerText = `${weatherData.timezone}`;
+  weatherTwo.appendChild(timeZone);
+
+  const condition = document.createElement("h3");
+  condition.classList.add("condition");
+  condition.innerText = ` ${weatherData.currentConditions.conditions}`;
+  weatherPlc.appendChild(condition);
+
+  const description = document.createElement("h3");
+  description.classList.add("description");
+  description.innerText = `Description: ${weatherData.description}`;
+  weatherPlc.appendChild(description);
+
+  weather.appendChild(weatherTwo);
+  weather.appendChild(weatherThree);
+  weather.appendChild(weatherPlc);
 }
